@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>Update Poster</h1>
+
+<form action="{% url 'update-poster' poster.id %}" method ="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% comment %} {% for field  in form %}
+    <label for="{{field.label}}">{{field.label}}</label>
+    {{field}}    
+    {% endfor %} {% endcomment %}
+
+    {{form.as_p}}
+    <input type="submit" value="Update Poster">
+
+</form>
+
+
+
+{% endblock content %}

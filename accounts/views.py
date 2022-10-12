@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
 def loginPage(request):
     page = 'login'
-    form = LoginForm
+    form = LoginForm()
     if request.method == "POST":
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -24,12 +24,12 @@ def loginPage(request):
     return render(request, 'accounts/login_register.html',data)
 
 def signupPage(request):
-    form = MyUserCreationForm
+    form = MyUserCreationForm()
     if request.method == "POST":
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        password = request.POST.get('password1')
-        confirm_password = request.POST.get('password2')
+        # username = request.POST.get('username')
+        # email = request.POST.get('email')
+        # password = request.POST.get('password1')
+        # confirm_password = request.POST.get('password2')
 
         form = MyUserCreationForm(request.POST)
         if form.is_valid:
