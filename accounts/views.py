@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import User
-from .forms import MyUserCreationForm, LoginForm
+from .forms import MyUserCreationForm, LoginForm, UserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth.decorators import login_required
+
+
 def loginPage(request):
     page = 'login'
     form = LoginForm()
@@ -45,3 +48,22 @@ def signupPage(request):
 def logoutPage(request):
     logout(request)
     return redirect('home')
+
+@login_required(login_url='login')
+def updateProfile(request,id):
+    user= User.objects.get(pk=id)
+    if request.user == user:
+        form = UserForm(instance=user)
+        if request.method == "POST":
+            form = UserForm(request.POST, instance = user)
+            if form.is_valid():
+                form.save()
+                messages.success(request,"Profile Updated")
+                return redirect("posters")
+    else:
+        return redirect('posters')
+    data ={
+        'form':form,
+    }
+    return render(request,'accounts/update-profile.html',data)
+    

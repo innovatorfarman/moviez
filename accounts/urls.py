@@ -5,4 +5,5 @@ urlpatterns = [
     path('login/', views.loginPage, name="login"),
     path('signup/', views.signupPage, name="signup"),
     path('logout/', views.logoutPage, name="logout"),
+    path('update-profile/<str:id>/',views.updateProfile,name="update-profile"),
 ]
