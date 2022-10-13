@@ -1,4 +1,9 @@
 {% extends 'main.html' %}
+{% load static %}
+{% block style %}
+
+
+{% endblock style %}
 
 {% block content %}
 
@@ -15,6 +20,5 @@
 {% endfor %} {% endcomment %}
 <a href=" {% url 'create-poster' %}">Create Poster</a>
 <a href=" {% url 'posters' %}">View Your Posters</a>
-
 
 {% endblock content %}
