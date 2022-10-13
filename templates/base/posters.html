@@ -7,6 +7,12 @@
   <br>
 
   <div class="tubers grid">
+    {% if not posters %}
+    <div>
+      <h2>No Posters found</h2>
+      <span>You are not a member for any movie poster <a href="{% url 'create-poster' %}">Create my First Poster</a></span>
+    </div>
+    {% endif %}
     <!-- person 1 -->
     {% for poster in posters %}
 

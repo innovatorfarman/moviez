@@ -25,6 +25,13 @@
         <!-- Logged In -->
         {% if request.user.is_authenticated %}
         <div class="header__user">
+          <a href="{% url 'create-poster' %}" style="margin-top:15px">
+            <p>Create Poster</p>
+          </a> 
+
+          <a href="{% url 'posters' %}" style="margin-top:15px">
+            <p>My Posters</p>
+          </a> 
           <a href="{% url 'user-profile' user.id %}">
             <div class="avatar avatar--medium active">
               <img src="{{user.photo.url}}" />
@@ -63,6 +70,7 @@
             Logout</a>
           
         </div>
+        
         {% else %}
         <a href="{% url 'login' %}">
           <img src="{% static 'images/avatar.svg' %}" />
