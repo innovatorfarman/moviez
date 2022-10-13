@@ -4,7 +4,7 @@ from .models import MoviePoster
 from django.contrib.auth.decorators import login_required
 from .forms import PosterForm
 from django.contrib import messages
-
+from django.db.models import Q
 
 def home(request):
     posters = MoviePoster.objects.all().order_by('-created_at')
@@ -18,6 +18,9 @@ def home(request):
 def posters(request):
     user = request.user
     posters = user.movieposter_set.all()
+    if 'q' in request.GET:
+        q = request.GET.get('q')
+        posters = user.movieposter_set.filter(title__icontains=q)
     data ={
         'posters':posters,
     }
@@ -72,3 +75,5 @@ def deletePoster(request,id):
         'obj':poster
     }
     return render(request,'inc/delete.html',data)
+
+

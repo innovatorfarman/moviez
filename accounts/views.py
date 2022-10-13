@@ -46,6 +46,14 @@ def signupPage(request):
                         messages.error(request,"Username already exists")
                     else:
                         messages.error(request,"Error during signup")
+                        if len(password)<8:
+                            messages.error(request,"Password must contain 8 characters")
+                            
+                        if password.isalpha():
+                            messages.error(request,"Password should contains numbers")
+                            messages.error(request,"Password must contains special chars")
+                        elif password.isalnum():
+                            messages.error(request,"Password must contains special char")
             else:
                 messages.error(request,"Password does not match")
     data ={
