@@ -35,6 +35,7 @@ def signupPage(request):
         if form.is_valid():
             form.save()
             messages.success(request,"Account created successfully!")
+            return redirect('login')
         
         else:
             if password == confirm_password:

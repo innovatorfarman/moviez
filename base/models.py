@@ -4,21 +4,21 @@ from django.db import models
 from accounts.models import User
 class MoviePoster(models.Model):
     GENRE_CHOICES = [
-        ('action', 'Action'),
-        ('comedy', 'Comedy'),
-        ('drama', 'Drama'),
-        ('horror', 'Horror'),
-        ('romance', 'Romance'),
-        ('thriller', 'Thriller'),
-        ('sports', 'Sports'),
-        ('adventure', 'Adventure'),
+        ('Action', 'Action'),
+        ('Comedy', 'Comedy'),
+        ('Drama', 'Drama'),
+        ('Horror', 'Horror'),
+        ('Romance', 'Romance'),
+        ('Thriller', 'Thriller'),
+        ('Sports', 'Sports'),
+        ('Adventure', 'Adventure'),
     ]
 
     FILM_INDUSTRY_CHOICES = [
-        ('bollywood',"Bollywood"),
-        ('hollywood','Hollywood'),
-        ('tollywood','Tollywood'),
-        ('webseries','Webseries'),
+        ('Bollywood',"Bollywood"),
+        ('Hollywood','Hollywood'),
+        ('Tollywood','Tollywood'),
+        ('Webseries','Webseries'),
     ]
     member = models.ManyToManyField(User, blank=True)
     author = models.ForeignKey(User, null= True, on_delete = models.SET_NULL,related_name="author",)

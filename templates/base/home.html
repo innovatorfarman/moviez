@@ -1,13 +1,19 @@
 {% extends 'main.html' %}
 {% load static %}
-{% block style %}
-
-{% endblock style %}
 
 {% block content %}
 
 
-<a href=" {% url 'create-poster' %}"> Create Poster</a>
-<a href=" {% url 'posters' %}">View Your Posters</a>
+<br>
+<br>
+<center>
+<div>
+    <h1>Create and Watch Movies Posters</h1>
+<a style="background-color:#AED6F1;color:#1C2833;padding:20px; border-radius:10px; margin-right:10px;" 
+href=" {% url 'create-poster' %}"><h1>Create Poster</h1> </a>
 
+<a style="background-color:#AED6F1;color:#1C2833;padding:20px; border-radius:10px;" 
+href=" {% url 'posters' %}"><h1>View Your Posters</h1></a>
+</div>
+</center>
 {% endblock content %}
