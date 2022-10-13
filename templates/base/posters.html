@@ -4,29 +4,36 @@
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/poster.css' %}">
 {% endblock style %}
-<style>
-    
-   
 
-</style>
 {% block content %}
-{% for poster in posters %}
-<div class="card border-0 text-center ml-3 mr-3">
-    <div class="feature-text">
-      <img src="{{poster.poster_image.url}}" class="card-img-top" alt="team-member">
-      
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{poster.title}}</h5>
-      <p class="card-text">{{fy.category}}</p>
-      <div class="person-description mt-2">
-        <p>{{poster.author}}</p>
-        {% comment %} <button class="btn btn-accent">City: {{fy.city}} </button> {% endcomment %}
-        
+
+<section class="container mt-5 mb-5">
+  <h1 class="text-center">Movie Posters</h1>
+  <br>
+
+  <div class="tubers grid">
+    <!-- person 1 -->
+    {% for poster in posters %}
+
+    <div class="card border-0 text-center" style="width:300px;">
+      <div>
+        <img src="{{poster.poster_image.url}}" class="card-img-top" style="width:300px;" alt="team-member">
+
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">{{poster.title}}</h2>
+        <span class="card-text" style="background-color:#171412;padding:5px;color:#fff;font-size:16px;">{{poster.genre}}</span>
+        <span class="card-text" style="background-color:#171412;padding:5px;color:#fff;font-size:16px;">{{poster.film_industry}}</span>
+        <br>
+        <a href="{% url 'user-profile' poster.author.id %}"><span class="card-text" style="font-size:14px;">@{{poster.author}}</span></a>
+        <span class="card-text" style="font-size:14px;"> created {{poster.created_at | timesince}} ago</span>
+        <div class="person-description mt-2">
+          <a href="{% url 'update-poster' poster.id %}" ><button class="btn btn-accent" style="color:white;background-color:#002147;"> Edit </button></a>
+          <a href="{% url 'delete-poster' poster.id %}" ><button class="btn btn-accent" style="color:white;background-color:#ff4040;"> Delete </button></a>
+        </div>
       </div>
     </div>
-  </div>
 
-  {% endfor %}
+    {% endfor %}
 
 {% endblock content %}

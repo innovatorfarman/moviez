@@ -2,7 +2,7 @@
 <header class="header header--loggedIn">
     <div class="container">
       <a href="/" class="header__logo">
-        <img src="{% static 'images/logo.svg' %}" />
+        {% comment %} <img src="{% static 'images/logo.svg' %}" /> {% endcomment %}
         <h1>MovieZ</h1>
       </a>
       <form class="header__search" action="{% url 'home' %}" method="GET">
