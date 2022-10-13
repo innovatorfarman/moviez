@@ -18,7 +18,12 @@
             <p>@{{profile.username}}</p>
             {% if request.user == profile %}
             <a href="{% url 'update-profile' profile.id %}" class="btn btn--main btn--pill">Edit Profile</a>
+            {% endif %} 
+          
+            {% if request.user.role == 'admin' %}
+            <a href="{% url 'admin:index' %}" class="btn btn--main btn--pill" style="margin-top:10px;">Admin Dashboard</a>
             {% endif %}
+           
           </div>
           <div class="profile__about">
             <h3>About</h3>

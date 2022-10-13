@@ -9,13 +9,14 @@ class User(AbstractUser):
         ('member', 'Member'),
         ('admin', 'Admin')
     ]
+    username=models.CharField(max_length=30)
     email = models.EmailField(unique=True, null=True)    
     role = models.CharField(max_length= 30, choices = ROLE_CHOICES, default='member')
     photo = models.ImageField(upload_to='profile/%Y', null=True,blank=True, default='default.png')
     bio = models.TextField(null=True,blank=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
 
     def __str__(self):
         return self.username
