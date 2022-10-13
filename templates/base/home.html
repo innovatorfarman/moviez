@@ -2,23 +2,12 @@
 {% load static %}
 {% block style %}
 
-
 {% endblock style %}
 
 {% block content %}
 
-<h1>Home</h1>
 
-{% comment %} {% for poster in posters %}
-<div>
-    <img src="{{poster.poster_image.url}}" alt="Movie Poster" width="250px" height="250px">
-    <p>{{poster.title}}</p>
-    <span>{{poster.created_at| timesince}} ago </span>
-    <p>{{poster.genre}}</p>
-    <p>{{poster.film_industry}}</p>
-</div>
-{% endfor %} {% endcomment %}
-<a href=" {% url 'create-poster' %}">Create Poster</a>
+<a href=" {% url 'create-poster' %}"> Create Poster</a>
 <a href=" {% url 'posters' %}">View Your Posters</a>
 
 {% endblock content %}

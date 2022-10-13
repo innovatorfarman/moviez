@@ -1,18 +1,32 @@
 {% extends 'main.html' %}
+{% load static %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/poster.css' %}">
+{% endblock style %}
+<style>
+    
+   
+
+</style>
 {% block content %}
-
 {% for poster in posters %}
-<div>
-    <img src="{{poster.poster_image.url}}" alt="Movie Poster" width="250px" height="250px">
-    <span>Author: {{poster.author}}</span>
-    <span>{{poster.created_at| timesince}} ago </span>
-    <a href="{% url 'update-poster' poster.id %}">Edit Poster</a>
-    <a href="{% url 'delete-poster' poster.id %}">Delete Poster</a>
-    <p>{{poster.title}}</p>
-    <p>{{poster.genre}}</p>
-    <p>{{poster.film_industry}}</p>
-</div>
-{% endfor %}
+<div class="card border-0 text-center ml-3 mr-3">
+    <div class="feature-text">
+      <img src="{{poster.poster_image.url}}" class="card-img-top" alt="team-member">
+      
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{poster.title}}</h5>
+      <p class="card-text">{{fy.category}}</p>
+      <div class="person-description mt-2">
+        <p>{{poster.author}}</p>
+        {% comment %} <button class="btn btn-accent">City: {{fy.city}} </button> {% endcomment %}
+        
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
 
 {% endblock content %}

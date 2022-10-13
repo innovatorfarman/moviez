@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+<main class="profile-page layout layout--3">
+    <div class="container">
+
+      <div class="roomList">
+        <div class="profile">
+          <div class="profile__avatar">
+            <div class="avatar avatar--large active">
+              <img src="https://randomuser.me/api/portraits/men/11.jpg" />
+            </div>
+          </div>
+          <div class="profile__info">
+            <h3>{{profile.first_name}} {{profile.last_name}}</h3>
+            <p>@{{profile.username}}</p>
+            {% if request.user == profile %}
+            <a href="{% url 'update-profile' profile.id %}" class="btn btn--main btn--pill">Edit Profile</a>
+            {% endif %}
+          </div>
+          <div class="profile__about">
+            <h3>About</h3>
+            <p>
+              {{profile.bio}}
+            </p>
+          </div>
+        </div>
+
+        
+        
+      </div>
+       
+    </div>
+  </main>
+
+
+
+{% endblock content %}
+
